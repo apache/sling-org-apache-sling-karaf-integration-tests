@@ -282,9 +282,6 @@
             </executions>
             <configuration>
               <redirectTestOutputToFile>true</redirectTestOutputToFile>
-              <excludes>
-                <exclude>**/SlingLaunchpadOak*IT.*</exclude>
-              </excludes>
             </configuration>
           </plugin>
         </plugins>
