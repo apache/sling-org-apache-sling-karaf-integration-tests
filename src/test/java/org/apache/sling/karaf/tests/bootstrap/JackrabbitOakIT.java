@@ -34,60 +34,39 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class JackrabbitSlingIT extends KarafTestSupport {
+public class JackrabbitOakIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("jackrabbit-sling")
+            addSlingFeatures("jackrabbit-oak")
         );
     }
 
     @Test
-    public void testOrgApacheJackrabbitJackrabbitApi() {
-        final Bundle bundle = findBundle("org.apache.jackrabbit.jackrabbit-api");
+    public void testOrgApacheJackrabbitOakCore() {
+        final Bundle bundle = findBundle("org.apache.jackrabbit.oak-core");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
     @Test
-    public void testOrgApacheJackrabbitJackrabbitJcrCommons() {
-        final Bundle bundle = findBundle("org.apache.jackrabbit.jackrabbit-jcr-commons");
+    public void testOrgApacheJackrabbitOakCommons() {
+        final Bundle bundle = findBundle("org.apache.jackrabbit.oak-commons");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
     @Test
-    public void testOrgApacheJackrabbitJackrabbitJcrRmi() {
-        final Bundle bundle = findBundle("org.apache.jackrabbit.jackrabbit-jcr-rmi");
+    public void testOrgApacheJackrabbitOakBlob() {
+        final Bundle bundle = findBundle("org.apache.jackrabbit.oak-blob");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
     @Test
-    public void testOrgApacheJackrabbitJackrabbitSpi() {
-        final Bundle bundle = findBundle("org.apache.jackrabbit.jackrabbit-spi");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testOrgApacheJackrabbitJackrabbitSpiCommons() {
-        final Bundle bundle = findBundle("org.apache.jackrabbit.jackrabbit-spi-commons");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testOrgApacheJackrabbitJackrabbitWebdav() {
-        final Bundle bundle = findBundle("org.apache.jackrabbit.jackrabbit-webdav");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testJavaxJcr() {
-        final Bundle bundle = findBundle("javax.jcr");
+    public void testOrgApacheJackrabbitOakJcr() {
+        final Bundle bundle = findBundle("org.apache.jackrabbit.oak-jcr");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
@@ -95,6 +74,13 @@ public class JackrabbitSlingIT extends KarafTestSupport {
     @Test
     public void testComGoogleGuava() {
         final Bundle bundle = findBundle("com.google.guava");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheFelixJaas() {
+        final Bundle bundle = findBundle("org.apache.felix.jaas");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }

@@ -35,12 +35,12 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class TikaSlingIT extends KarafTestSupport {
+public class TikaIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("tika-sling")
+            addSlingFeatures("tika")
         );
     }
 
