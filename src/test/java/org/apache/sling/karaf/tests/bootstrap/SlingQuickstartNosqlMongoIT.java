@@ -20,6 +20,8 @@ package org.apache.sling.karaf.tests.bootstrap;
 
 import java.io.IOException;
 
+import javax.inject.Inject;
+
 import de.flapdoodle.embed.mongo.MongodExecutable;
 import de.flapdoodle.embed.mongo.MongodProcess;
 import de.flapdoodle.embed.mongo.MongodStarter;
@@ -28,6 +30,8 @@ import de.flapdoodle.embed.mongo.config.MongodConfigBuilder;
 import de.flapdoodle.embed.mongo.config.Net;
 import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.runtime.Network;
+import org.apache.sling.api.resource.ResourceProviderFactory;
+import org.apache.sling.karaf.testing.KarafTestSupport;
 import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,7 +41,7 @@ import org.ops4j.pax.exam.OptionUtils;
 import org.ops4j.pax.exam.junit.PaxExam;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
-import org.osgi.framework.Bundle;
+import org.ops4j.pax.exam.util.Filter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -47,11 +51,15 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.editConfi
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingLaunchpadOakMongoIT extends AbstractSlingLaunchpadOakTestSupport {
+public class SlingQuickstartNosqlMongoIT extends KarafTestSupport {
 
     private static MongodExecutable executable;
 
     private static MongodProcess process;
+
+    @Inject
+    @Filter(timeout = 300000)
+    public ResourceProviderFactory resourceProviderFactory;
 
     protected void startMongo(final int port) throws IOException {
         final MongodStarter starter = MongodStarter.getDefaultInstance();
@@ -72,45 +80,23 @@ public class SlingLaunchpadOakMongoIT extends AbstractSlingLaunchpadOakTestSuppo
     public Option[] configuration() throws IOException {
         final int port = Network.getFreeServerPort();
         startMongo(port);
-        final String mongoUri = String.format("mongodb://localhost:%s", port);
+        final String connectionString = String.format("localhost:%s", port);
         return OptionUtils.combine(baseConfiguration(),
             editConfigurationFilePut("etc/org.apache.karaf.features.cfg", "featuresBoot", "(wrap)"),
-            editConfigurationFilePut("etc/org.apache.jackrabbit.oak.plugins.document.DocumentNodeStoreService.config", "mongouri", mongoUri),
+            editConfigurationFilePut("etc/org.apache.sling.nosql.mongodb.resourceprovider.MongoDBNoSqlResourceProviderFactory.factory.config.config", "connectionString", connectionString),
             wrappedBundle(mavenBundle().groupId("de.flapdoodle.embed").artifactId("de.flapdoodle.embed.mongo").versionAsInProject()),
             wrappedBundle(mavenBundle().groupId("de.flapdoodle.embed").artifactId("de.flapdoodle.embed.process").versionAsInProject()),
             wrappedBundle(mavenBundle().groupId("net.java.dev.jna").artifactId("jna").versionAsInProject()),
             wrappedBundle(mavenBundle().groupId("net.java.dev.jna").artifactId("jna-platform").versionAsInProject()),
             mavenBundle().groupId("org.apache.commons").artifactId("commons-compress").versionAsInProject(),
-            addSlingFeatures("sling-launchpad-oak-mongo")
+            addSlingFeatures("sling-quickstart-nosql-mongodb")
         );
     }
 
     @Test
-    public void testOrgApacheSlingJcrOakServer() {
-        final Bundle bundle = findBundle("org.apache.sling.jcr.oak.server");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testOrgApacheJackrabbitOakLucene() {
-        final Bundle bundle = findBundle("org.apache.jackrabbit.oak-lucene");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testOrgMongodbMongoJavaDriver() {
-        final Bundle bundle = findBundle("org.mongodb.mongo-java-driver");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testComH2databaseH2Mvstore() {
-        final Bundle bundle = findBundle("org.h2.mvstore");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
+    public void testResourceProviderFactory() {
+        assertNotNull(resourceProviderFactory);
+        assertEquals("org.apache.sling.nosql.mongodb.resourceprovider.impl.MongoDBNoSqlResourceProviderFactory", resourceProviderFactory.getClass().getName());
     }
 
 }

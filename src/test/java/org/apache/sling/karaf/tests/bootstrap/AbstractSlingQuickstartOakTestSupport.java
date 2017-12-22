@@ -49,7 +49,6 @@ import org.apache.sling.api.resource.observation.ResourceChange.ChangeType;
 import org.apache.sling.api.resource.observation.ResourceChangeListener;
 import org.apache.sling.jcr.api.SlingRepository;
 import org.apache.sling.karaf.testing.KarafTestSupport;
-import org.junit.After;
 import org.junit.Test;
 import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.ServiceRegistration;
@@ -61,7 +60,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-public abstract class AbstractSlingLaunchpadOakTestSupport extends KarafTestSupport {
+public abstract class AbstractSlingQuickstartOakTestSupport extends KarafTestSupport {
 
     @Inject
     @Filter(timeout = 300000)
@@ -73,7 +72,7 @@ public abstract class AbstractSlingLaunchpadOakTestSupport extends KarafTestSupp
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    public AbstractSlingLaunchpadOakTestSupport() {
+    public AbstractSlingQuickstartOakTestSupport() {
     }
 
     @Test

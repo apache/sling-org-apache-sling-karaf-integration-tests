@@ -18,7 +18,6 @@
  */
 package org.apache.sling.karaf.tests.bootstrap;
 
-import org.apache.sling.karaf.testing.KarafTestSupport;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
@@ -34,32 +33,32 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingLaunchpadOakIT extends KarafTestSupport {
+public class SlingQuickstartOakTarIT extends AbstractSlingQuickstartOakTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-launchpad-oak")
+            addSlingFeatures("sling-quickstart-oak-tar")
         );
     }
 
     @Test
-    public void testOrgApacheFelixPrefs() {
-        final Bundle bundle = findBundle("org.apache.felix.prefs");
+    public void testOrgApacheSlingJcrOakServer() {
+        final Bundle bundle = findBundle("org.apache.sling.jcr.oak.server");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
     @Test
-    public void testOrgApacheFelixWebconsolePluginsMemoryusage() {
-        final Bundle bundle = findBundle("org.apache.felix.webconsole.plugins.memoryusage");
+    public void testOrgApacheJackrabbitOakLucene() {
+        final Bundle bundle = findBundle("org.apache.jackrabbit.oak-lucene");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
     @Test
-    public void testOrgApacheFelixWebconsolePluginsPackageadmin() {
-        final Bundle bundle = findBundle("org.apache.felix.webconsole.plugins.packageadmin");
+    public void testOrgApacheJackrabbitOakSegmentTar() {
+        final Bundle bundle = findBundle("org.apache.jackrabbit.oak-segment-tar");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }

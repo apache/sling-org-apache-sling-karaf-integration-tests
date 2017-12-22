@@ -44,7 +44,7 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.editConfi
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingLaunchpadNosqlCouchbaseIT extends KarafTestSupport {
+public class SlingQuickstartNosqlCouchbaseIT extends KarafTestSupport {
 
     private static CouchbaseMock couchbase;
 
@@ -83,7 +83,7 @@ public class SlingLaunchpadNosqlCouchbaseIT extends KarafTestSupport {
             mavenBundle().groupId("com.googlecode.json-simple").artifactId("json-simple").versionAsInProject(),
             mavenBundle().groupId("org.apache.servicemix.bundles").artifactId("org.apache.servicemix.bundles.rhino").versionAsInProject(),
             mavenBundle().groupId("org.tukaani").artifactId("xz").versionAsInProject(),
-            addSlingFeatures("sling-launchpad-nosql-couchbase")
+            addSlingFeatures("sling-quickstart-nosql-couchbase")
         );
     }
 
