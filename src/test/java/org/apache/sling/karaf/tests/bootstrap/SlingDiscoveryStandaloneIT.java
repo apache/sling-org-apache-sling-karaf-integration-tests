@@ -34,18 +34,18 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingExtensionJmxProviderIT extends KarafTestSupport {
+public class SlingDiscoveryStandaloneIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-extension-jmx-provider")
+            addSlingFeatures("sling-discovery-standalone")
         );
     }
 
     @Test
-    public void testOrgApacheSlingJmxProvider() {
-        final Bundle bundle = findBundle("org.apache.sling.jmx.provider");
+    public void testOrgApacheSlingDiscoveryStandalone() {
+        final Bundle bundle = findBundle("org.apache.sling.discovery.standalone");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }

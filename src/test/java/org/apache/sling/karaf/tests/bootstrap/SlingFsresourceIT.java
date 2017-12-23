@@ -34,32 +34,18 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingExtensionResourceInventoryIT extends KarafTestSupport {
+public class SlingFsresourceIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-extension-resource-inventory")
+            addSlingFeatures("sling-fsresource")
         );
     }
 
     @Test
-    public void testOrgApacheSlingResourceInventory() {
-        final Bundle bundle = findBundle("org.apache.sling.resource.inventory");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testOrgApacheFelixInventory() {
-        final Bundle bundle = findBundle("org.apache.felix.inventory");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testOrgApacheCommonsLang3() {
-        final Bundle bundle = findBundle("org.apache.commons.lang3");
+    public void testOrgApacheSlingFsresource() {
+        final Bundle bundle = findBundle("org.apache.sling.fsresource");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }

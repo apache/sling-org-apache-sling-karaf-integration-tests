@@ -34,39 +34,25 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingExtensionHealthcheckIT extends KarafTestSupport {
+public class SlingModelsIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-extension-healthcheck")
+            addSlingFeatures("sling-models")
         );
     }
 
     @Test
-    public void testOrgApacheSlingHealthcheckApi() {
-        final Bundle bundle = findBundle("org.apache.sling.hc.api");
+    public void testOrgApacheSlingModelsApi() {
+        final Bundle bundle = findBundle("org.apache.sling.models.api");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
     @Test
-    public void testOrgApacheSlingHealthcheckCore() {
-        final Bundle bundle = findBundle("org.apache.sling.hc.core");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testOrgApacheSlingHealthcheckSupport() {
-        final Bundle bundle = findBundle("org.apache.sling.hc.support");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testOrgApacheSlingHealthcheckWebconsole() {
-        final Bundle bundle = findBundle("org.apache.sling.hc.webconsole");
+    public void testOrgApacheSlingModelsImpl() {
+        final Bundle bundle = findBundle("org.apache.sling.models.impl");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }

@@ -34,25 +34,18 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingExtensionUrlrewriterIT extends KarafTestSupport {
+public class SlingXssIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-extension-urlrewriter")
+            addSlingFeatures("sling-xss")
         );
     }
 
     @Test
-    public void testOrgApacheSlingUrlrewriter() {
-        final Bundle bundle = findBundle("org.apache.sling.urlrewriter");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testOrgApacheServicemixBundlesUrlrewritefilter() {
-        final Bundle bundle = findBundle("org.apache.servicemix.bundles.urlrewritefilter");
+    public void testOrgApacheSlingXss() {
+        final Bundle bundle = findBundle("org.apache.sling.xss");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }

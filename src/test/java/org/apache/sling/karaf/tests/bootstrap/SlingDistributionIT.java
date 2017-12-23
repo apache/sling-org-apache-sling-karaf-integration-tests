@@ -34,18 +34,46 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingExtensionDiscoveryStandaloneIT extends KarafTestSupport {
+public class SlingDistributionIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-extension-discovery-standalone")
+            addSlingFeatures("sling-distribution")
         );
     }
 
     @Test
-    public void testOrgApacheSlingDiscoveryStandalone() {
-        final Bundle bundle = findBundle("org.apache.sling.discovery.standalone");
+    public void testOrgApacheSlingDistributionApi() {
+        final Bundle bundle = findBundle("org.apache.sling.distribution.api");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheSlingDistributionCore() {
+        final Bundle bundle = findBundle("org.apache.sling.distribution.core");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheHttpcomponentsHttpcore() {
+        final Bundle bundle = findBundle("org.apache.httpcomponents.httpcore");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheHttpcomponentsHttpclient() {
+        final Bundle bundle = findBundle("org.apache.httpcomponents.httpclient");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheJackrabbitVault() {
+        final Bundle bundle = findBundle("org.apache.jackrabbit.vault");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }

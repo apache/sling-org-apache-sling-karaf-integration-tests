@@ -34,18 +34,18 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingExtensionQueryIT extends KarafTestSupport {
+public class SlingModelsJacksonexporterIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-extension-query")
+            addSlingFeatures("sling-models-jacksonexporter")
         );
     }
 
     @Test
-    public void testOrgApacheSlingQuery() {
-        final Bundle bundle = findBundle("org.apache.sling.query");
+    public void testOrgApacheSlingModelsJacksonexporter() {
+        final Bundle bundle = findBundle("org.apache.sling.models.jacksonexporter");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }

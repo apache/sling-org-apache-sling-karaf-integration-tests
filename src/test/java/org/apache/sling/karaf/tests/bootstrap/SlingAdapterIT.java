@@ -34,32 +34,18 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingExtensionValidationIT extends KarafTestSupport {
+public class SlingAdapterIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-extension-validation")
+            addSlingFeatures("sling-adapter")
         );
     }
 
     @Test
-    public void testOrgApacheSlingValidationApi() {
-        final Bundle bundle = findBundle("org.apache.sling.validation.api");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testOrgApacheSlingValidationCore() {
-        final Bundle bundle = findBundle("org.apache.sling.validation.core");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testOrgApacheCommonsCollections4() {
-        final Bundle bundle = findBundle("org.apache.commons.collections4");
+    public void testOrgApacheSlingAdapter() {
+        final Bundle bundle = findBundle("org.apache.sling.adapter");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }

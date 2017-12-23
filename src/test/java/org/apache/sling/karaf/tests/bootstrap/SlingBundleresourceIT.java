@@ -34,18 +34,18 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingExtensionThreaddumpIT extends KarafTestSupport {
+public class SlingBundleresourceIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-extension-threaddump")
+            addSlingFeatures("sling-bundleresource")
         );
     }
 
     @Test
-    public void testOrgApacheSlingExtensionsThreaddump() {
-        final Bundle bundle = findBundle("org.apache.sling.extensions.threaddump");
+    public void testOrgApacheSlingBundleresourceImpl() {
+        final Bundle bundle = findBundle("org.apache.sling.bundleresource.impl");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }

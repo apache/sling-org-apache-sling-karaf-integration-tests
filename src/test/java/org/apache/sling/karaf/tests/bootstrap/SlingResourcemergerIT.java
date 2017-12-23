@@ -34,18 +34,18 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingExtensionRewriterIT extends KarafTestSupport {
+public class SlingResourcemergerIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-extension-rewriter")
+            addSlingFeatures("sling-resourcemerger")
         );
     }
 
     @Test
-    public void testOrgApacheSlingRewriter() {
-        final Bundle bundle = findBundle("org.apache.sling.rewriter");
+    public void testOrgApacheSlingResourcemerger() {
+        final Bundle bundle = findBundle("org.apache.sling.resourcemerger");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }

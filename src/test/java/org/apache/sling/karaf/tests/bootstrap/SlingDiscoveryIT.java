@@ -34,25 +34,39 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingExtensionDistributionIT extends KarafTestSupport {
+public class SlingDiscoveryIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-extension-distribution")
+            addSlingFeatures("sling-discovery")
         );
     }
 
     @Test
-    public void testOrgApacheSlingDistributionApi() {
-        final Bundle bundle = findBundle("org.apache.sling.distribution.api");
+    public void testOrgApacheSlingDiscoveryApi() {
+        final Bundle bundle = findBundle("org.apache.sling.discovery.api");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
     @Test
-    public void testOrgApacheSlingDistributionCore() {
-        final Bundle bundle = findBundle("org.apache.sling.distribution.core");
+    public void testOrgApacheSlingDiscoveryBase() {
+        final Bundle bundle = findBundle("org.apache.sling.discovery.base");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheSlingDiscoveryCommons() {
+        final Bundle bundle = findBundle("org.apache.sling.discovery.commons");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheSlingDiscoverySupport() {
+        final Bundle bundle = findBundle("org.apache.sling.discovery.support");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
@@ -67,13 +81,6 @@ public class SlingExtensionDistributionIT extends KarafTestSupport {
     @Test
     public void testOrgApacheHttpcomponentsHttpclient() {
         final Bundle bundle = findBundle("org.apache.httpcomponents.httpclient");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testOrgApacheJackrabbitVault() {
-        final Bundle bundle = findBundle("org.apache.jackrabbit.vault");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }

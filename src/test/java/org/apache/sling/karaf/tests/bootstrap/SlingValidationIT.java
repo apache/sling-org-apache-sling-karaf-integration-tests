@@ -34,53 +34,32 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingExtensionDiscoveryIT extends KarafTestSupport {
+public class SlingValidationIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-extension-discovery")
+            addSlingFeatures("sling-validation")
         );
     }
 
     @Test
-    public void testOrgApacheSlingDiscoveryApi() {
-        final Bundle bundle = findBundle("org.apache.sling.discovery.api");
+    public void testOrgApacheSlingValidationApi() {
+        final Bundle bundle = findBundle("org.apache.sling.validation.api");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
     @Test
-    public void testOrgApacheSlingDiscoveryBase() {
-        final Bundle bundle = findBundle("org.apache.sling.discovery.base");
+    public void testOrgApacheSlingValidationCore() {
+        final Bundle bundle = findBundle("org.apache.sling.validation.core");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
     @Test
-    public void testOrgApacheSlingDiscoveryCommons() {
-        final Bundle bundle = findBundle("org.apache.sling.discovery.commons");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testOrgApacheSlingDiscoverySupport() {
-        final Bundle bundle = findBundle("org.apache.sling.discovery.support");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testOrgApacheHttpcomponentsHttpcore() {
-        final Bundle bundle = findBundle("org.apache.httpcomponents.httpcore");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testOrgApacheHttpcomponentsHttpclient() {
-        final Bundle bundle = findBundle("org.apache.httpcomponents.httpclient");
+    public void testOrgApacheCommonsCollections4() {
+        final Bundle bundle = findBundle("org.apache.commons.collections4");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }

@@ -34,18 +34,32 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingExtensionResourcemergerIT extends KarafTestSupport {
+public class SlingEventIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-extension-resourcemerger")
+            addSlingFeatures("sling-event")
         );
     }
 
     @Test
-    public void testOrgApacheSlingResourcemerger() {
-        final Bundle bundle = findBundle("org.apache.sling.resourcemerger");
+    public void testOrgApacheSlingEvent() {
+        final Bundle bundle = findBundle("org.apache.sling.event");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheSlingEventDea() {
+        final Bundle bundle = findBundle("org.apache.sling.event.dea");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheFelixInventory() {
+        final Bundle bundle = findBundle("org.apache.felix.inventory");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
