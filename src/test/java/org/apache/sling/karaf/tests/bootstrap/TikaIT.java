@@ -52,8 +52,29 @@ public class TikaIT extends KarafTestSupport {
     }
 
     @Test
-    public void testOrgApacheTikaBundle() {
-        final Bundle bundle = findBundle("org.apache.tika.bundle");
+    public void testOrgApacheTikaParsers() {
+        final Bundle bundle = findBundle("org.apache.tika.parsers");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApachePdfbox() {
+        final Bundle bundle = findBundle("org.apache.pdfbox");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApachePdfboxFontbox() {
+        final Bundle bundle = findBundle("org.apache.pdfbox.fontbox");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApachePdfboxJempbox() {
+        final Bundle bundle = findBundle("org.apache.pdfbox.jempbox");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
