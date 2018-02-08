@@ -170,16 +170,17 @@ public abstract class AbstractSlingQuickstartOakTestSupport extends KarafTestSup
         Session s = slingRepository.loginAdministrative(null);
         try {
             final Node root = s.getRootNode();
+            final Node content = root.getNodes("content").nextNode();
             final String name = uniqueName("assertCreateRetrieveNode");
             final String propName = "PN_" + name;
             final String propValue = "PV_" + name;
-            final Node child = nodeType == null ? root.addNode(name) : root.addNode(name, nodeType);
+            final Node child = nodeType == null ? content.addNode(name) : content.addNode(name, nodeType);
             child.setProperty(propName, propValue);
             child.setProperty("foo", child.getPath());
             s.save();
             s.logout();
             s = slingRepository.loginAdministrative(null);
-            final Node n = s.getNode("/" + name);
+            final Node n = s.getNode("/content/" + name);
             assertNotNull(n);
             assertEquals(propValue, n.getProperty(propName).getString());
             return n.getPath();
