@@ -56,4 +56,11 @@ public class SlingQuickstartOakTarIT extends AbstractSlingQuickstartOakTestSuppo
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
+    @Test
+    public void testOrgApacheJackrabbitOakLucene() {
+        final Bundle bundle = findBundle("org.apache.jackrabbit.oak-lucene");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
 }
