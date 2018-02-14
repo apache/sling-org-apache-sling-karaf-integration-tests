@@ -92,11 +92,4 @@ public class JackrabbitIT extends KarafTestSupport {
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
-    @Test
-    public void testComGoogleGuava() {
-        final Bundle bundle = findBundle("com.google.guava");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
 }
