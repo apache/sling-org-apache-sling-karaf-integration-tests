@@ -34,18 +34,18 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingLaunchpadContentIT extends KarafTestSupport {
+public class SlingStarterContentIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-launchpad-content")
+            addSlingFeatures("sling-starter-content")
         );
     }
 
     @Test
-    public void testOrgApacheSlingLaunchpadContent() {
-        final Bundle bundle = findBundle("org.apache.sling.launchpad.content");
+    public void testOrgApacheSlingStarterContent() {
+        final Bundle bundle = findBundle("org.apache.sling.starter.content");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
