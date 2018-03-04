@@ -93,6 +93,13 @@ public class SlingQuickstartOakMongoIT extends AbstractSlingQuickstartOakTestSup
     }
 
     @Test
+    public void testOrgApacheJackrabbitOakStoreDocument() {
+        final Bundle bundle = findBundle("org.apache.jackrabbit.oak-store-document");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
     public void testOrgApacheJackrabbitOakLucene() {
         final Bundle bundle = findBundle("org.apache.jackrabbit.oak-lucene");
         assertNotNull(bundle);
