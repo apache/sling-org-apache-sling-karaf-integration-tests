@@ -34,12 +34,6 @@
   <name>Apache Sling - Karaf Integration Tests</name>
   <description>Integration Tests for Apache Sling Karaf</description>
 
-  <properties>
-    <org.apache.jackrabbit.version>2.16.1</org.apache.jackrabbit.version>
-    <org.apache.karaf.version>4.2.0.M2</org.apache.karaf.version>
-    <org.ops4j.pax.exam.version>4.11.0</org.ops4j.pax.exam.version>
-  </properties>
-
   <scm>
     <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-karaf-integration-tests.git</connection>
     <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-karaf-integration-tests.git</developerConnection>
@@ -77,7 +71,7 @@
     <dependency>
       <groupId>org.apache.karaf.features</groupId>
       <artifactId>org.apache.karaf.features.core</artifactId>
-      <version>${org.apache.karaf.version}</version>
+      <version>4.2.0.M2</version>
       <scope>provided</scope>
     </dependency>
     <!-- Apache Sling -->
@@ -117,7 +111,7 @@
     <dependency>
       <groupId>org.apache.jackrabbit</groupId>
       <artifactId>jackrabbit-jcr-commons</artifactId>
-      <version>${org.apache.jackrabbit.version}</version>
+      <version>2.16.1</version>
       <scope>test</scope>
     </dependency>
     <!-- bnd -->
@@ -137,17 +131,17 @@
     <dependency>
       <groupId>org.ops4j.pax.exam</groupId>
       <artifactId>pax-exam</artifactId>
-      <version>${org.ops4j.pax.exam.version}</version>
+      <version>4.11.0</version>
     </dependency>
     <dependency>
       <groupId>org.ops4j.pax.exam</groupId>
       <artifactId>pax-exam-container-karaf</artifactId>
-      <version>${org.ops4j.pax.exam.version}</version>
+      <version>4.11.0</version>
     </dependency>
     <dependency>
       <groupId>org.ops4j.pax.exam</groupId>
       <artifactId>pax-exam-junit4</artifactId>
-      <version>${org.ops4j.pax.exam.version}</version>
+      <version>4.11.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -159,7 +153,7 @@
       <groupId>org.apache.karaf</groupId>
       <artifactId>apache-karaf</artifactId>
       <type>tar.gz</type>
-      <version>${org.apache.karaf.version}</version>
+      <version>4.2.0.M2</version>
       <scope>test</scope>
       <exclusions>
         <exclusion>
