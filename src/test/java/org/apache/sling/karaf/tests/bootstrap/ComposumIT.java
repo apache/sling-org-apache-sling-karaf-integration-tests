@@ -51,6 +51,13 @@ public class ComposumIT extends KarafTestSupport {
     }
 
     @Test
+    public void testComComposumCoreConfig() {
+        final Bundle bundle = findBundle("com.composum.core.config");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
     public void testComComposumCoreConsole() {
         final Bundle bundle = findBundle("com.composum.core.console");
         assertNotNull(bundle);
@@ -60,6 +67,20 @@ public class ComposumIT extends KarafTestSupport {
     @Test
     public void testComComposumCoreJslibs() {
         final Bundle bundle = findBundle("com.composum.core.jslibs");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testComComposumCoreUsermgnt() {
+        final Bundle bundle = findBundle("com.composum.core.usermgnt");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testComComposumCorePckgmgr() {
+        final Bundle bundle = findBundle("com.composum.core.pckgmgr");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
