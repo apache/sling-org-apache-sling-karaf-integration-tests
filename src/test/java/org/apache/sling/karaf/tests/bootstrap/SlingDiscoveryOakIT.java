@@ -44,8 +44,36 @@ public class SlingDiscoveryOakIT extends KarafTestSupport {
     }
 
     @Test
+    public void testOrgApacheSlingDiscoveryBase() {
+        final Bundle bundle = findBundle("org.apache.sling.discovery.base");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheSlingDiscoveryCommons() {
+        final Bundle bundle = findBundle("org.apache.sling.discovery.commons");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
     public void testOrgApacheSlingDiscoveryOak() {
         final Bundle bundle = findBundle("org.apache.sling.discovery.oak");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheHttpcomponentsHttpcore() {
+        final Bundle bundle = findBundle("org.apache.httpcomponents.httpcore");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheHttpcomponentsHttpclient() {
+        final Bundle bundle = findBundle("org.apache.httpcomponents.httpclient");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }

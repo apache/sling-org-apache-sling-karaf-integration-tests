@@ -39,7 +39,10 @@ public class SlingCommonsCompilerIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-commons-compiler")
+            addSlingFeatures(
+                "sling-commons-fsclassloader",
+                "sling-commons-compiler"
+            )
         );
     }
 

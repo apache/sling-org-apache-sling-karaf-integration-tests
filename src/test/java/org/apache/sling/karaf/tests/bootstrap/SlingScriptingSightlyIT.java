@@ -39,7 +39,10 @@ public class SlingScriptingSightlyIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-scripting-sightly")
+            addSlingFeatures(
+                "sling-commons-fsclassloader",
+                "sling-scripting-sightly"
+            )
         );
     }
 

@@ -39,7 +39,10 @@ public class SlingScriptingJavaIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-scripting-java")
+            addSlingFeatures(
+                "sling-commons-fsclassloader",
+                "sling-scripting-java"
+            )
         );
     }
 
