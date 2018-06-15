@@ -164,9 +164,10 @@
     </dependency>
     <!-- MongoDB -->
     <dependency>
+      <!-- zombie processes like extract-fd770c28-8fb5-4092-87d5-4100c18a8f32extractmongod with versions greater 2.0.0 use 100% CPU -->
       <groupId>de.flapdoodle.embed</groupId>
       <artifactId>de.flapdoodle.embed.mongo</artifactId>
-      <version>2.0.3</version>
+      <version>2.0.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
