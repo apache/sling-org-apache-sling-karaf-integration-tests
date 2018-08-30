@@ -79,13 +79,6 @@ public class SlingJcrIT extends KarafTestSupport {
     }
 
     @Test
-    public void testOrgApacheSlingJcrRegistration() {
-        final Bundle bundle = findBundle("org.apache.sling.jcr.registration");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
     public void testOrgApacheSlingJcrResource() {
         final Bundle bundle = findBundle("org.apache.sling.jcr.resource");
         assertNotNull(bundle);
