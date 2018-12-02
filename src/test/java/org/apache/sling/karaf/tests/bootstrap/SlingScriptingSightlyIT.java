@@ -40,22 +40,28 @@ public class SlingScriptingSightlyIT extends KarafTestSupport {
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
             addSlingFeatures(
-                "sling-commons-fsclassloader",
                 "sling-scripting-sightly"
             )
         );
     }
 
     @Test
-    public void testOrgApacheSlingSightly() {
+    public void testOrgApacheSlingScriptingSightly() {
         final Bundle bundle = findBundle("org.apache.sling.scripting.sightly");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
     @Test
-    public void testOrgApacheSlingSightlyJsProvider() {
+    public void testOrgApacheSlingScriptingSightlyJsProvider() {
         final Bundle bundle = findBundle("org.apache.sling.scripting.sightly.js.provider");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheSlingScriptingSightlyRuntime() {
+        final Bundle bundle = findBundle("org.apache.sling.scripting.sightly.runtime");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
