@@ -49,6 +49,7 @@ import org.apache.sling.api.resource.observation.ResourceChange.ChangeType;
 import org.apache.sling.api.resource.observation.ResourceChangeListener;
 import org.apache.sling.jcr.api.SlingRepository;
 import org.apache.sling.karaf.testing.KarafTestSupport;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.ServiceRegistration;
@@ -347,6 +348,7 @@ public abstract class AbstractSlingQuickstartOakTestSupport extends KarafTestSup
     }
 
     @Test
+    @Ignore
     public void testResourceEvents() throws RepositoryException {
         final AddedResourceChangeListener listener = new AddedResourceChangeListener();
         final Dictionary<String, Object> properties = new Hashtable<>();
