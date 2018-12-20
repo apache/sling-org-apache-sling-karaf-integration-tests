@@ -58,13 +58,6 @@ public class SlingJcrIT extends KarafTestSupport {
     }
 
     @Test
-    public void testOrgApacheSlingJcrClassloader() {
-        final Bundle bundle = findBundle("org.apache.sling.jcr.classloader");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
     public void testOrgApacheSlingJcrContentloader() {
         final Bundle bundle = findBundle("org.apache.sling.jcr.contentloader");
         assertNotNull(bundle);
