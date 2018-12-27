@@ -46,7 +46,6 @@ import org.ops4j.pax.exam.util.Filter;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
-import static org.ops4j.pax.exam.CoreOptions.wrappedBundle;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.editConfigurationFilePut;
 
 @RunWith(PaxExam.class)
@@ -84,10 +83,10 @@ public class SlingQuickstartNosqlMongoIT extends KarafTestSupport {
         return OptionUtils.combine(baseConfiguration(),
             editConfigurationFilePut("etc/org.apache.karaf.features.cfg", "featuresBoot", "(wrap)"),
             editConfigurationFilePut("etc/org.apache.sling.nosql.mongodb.resourceprovider.MongoDBNoSqlResourceProviderFactory.factory.config.config", "connectionString", connectionString),
-            wrappedBundle(mavenBundle().groupId("de.flapdoodle.embed").artifactId("de.flapdoodle.embed.mongo").versionAsInProject()),
-            wrappedBundle(mavenBundle().groupId("de.flapdoodle.embed").artifactId("de.flapdoodle.embed.process").versionAsInProject()),
-            wrappedBundle(mavenBundle().groupId("net.java.dev.jna").artifactId("jna").versionAsInProject()),
-            wrappedBundle(mavenBundle().groupId("net.java.dev.jna").artifactId("jna-platform").versionAsInProject()),
+            mavenBundle().groupId("de.flapdoodle.embed").artifactId("de.flapdoodle.embed.mongo").versionAsInProject(),
+            mavenBundle().groupId("de.flapdoodle.embed").artifactId("de.flapdoodle.embed.process").versionAsInProject(),
+            mavenBundle().groupId("net.java.dev.jna").artifactId("jna").versionAsInProject(),
+            mavenBundle().groupId("net.java.dev.jna").artifactId("jna-platform").versionAsInProject(),
             mavenBundle().groupId("org.apache.commons").artifactId("commons-compress").versionAsInProject(),
             addSlingFeatures("sling-quickstart-nosql-mongodb")
         );
