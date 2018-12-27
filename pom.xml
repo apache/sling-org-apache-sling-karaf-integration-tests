@@ -280,6 +280,12 @@
             </executions>
             <configuration>
               <redirectTestOutputToFile>true</redirectTestOutputToFile>
+              <properties>
+                <property>
+                  <name>listener</name>
+                  <value>org.apache.sling.karaf.tests.support.MongodProcessStopper</value>
+                </property>
+              </properties>
             </configuration>
           </plugin>
         </plugins>

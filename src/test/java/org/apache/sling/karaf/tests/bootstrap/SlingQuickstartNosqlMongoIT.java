@@ -32,7 +32,7 @@ import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.runtime.Network;
 import org.apache.sling.api.resource.ResourceProviderFactory;
 import org.apache.sling.karaf.testing.KarafTestSupport;
-import org.junit.AfterClass;
+import org.apache.sling.karaf.tests.support.MongodProcessStopper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
@@ -52,10 +52,6 @@ import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.editConfi
 @ExamReactorStrategy(PerClass.class)
 public class SlingQuickstartNosqlMongoIT extends KarafTestSupport {
 
-    private static MongodExecutable executable;
-
-    private static MongodProcess process;
-
     @Inject
     @Filter(timeout = 300000)
     public ResourceProviderFactory resourceProviderFactory;
@@ -64,15 +60,9 @@ public class SlingQuickstartNosqlMongoIT extends KarafTestSupport {
         final MongodStarter starter = MongodStarter.getDefaultInstance();
         final Net net = new Net(port, Network.localhostIsIPv6());
         final IMongodConfig mongodConfig = new MongodConfigBuilder().version(Version.Main.PRODUCTION).net(net).build();
-        executable = starter.prepare(mongodConfig);
-        process = executable.start();
-    }
-
-    @AfterClass // TODO does it work? (no - not supported by Pax Exam)
-    public static void stopMongo() throws Exception {
-        if (executable != null) {
-            executable.stop();
-        }
+        final MongodExecutable executable = starter.prepare(mongodConfig);
+        final MongodProcess process = executable.start();
+        MongodProcessStopper.add(process);
     }
 
     @Configuration
