@@ -34,25 +34,39 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingHealthcheckIT extends KarafTestSupport {
+public class FelixHealthcheckIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-healthcheck")
+            addSlingFeatures("felix-healthcheck")
         );
     }
 
     @Test
-    public void testOrgApacheSlingHealthcheckApi() {
-        final Bundle bundle = findBundle("org.apache.sling.hc.api");
+    public void testOrgApacheFelixHealthcheckApi() {
+        final Bundle bundle = findBundle("org.apache.felix.healthcheck.api");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
     @Test
-    public void testOrgApacheSlingHealthcheckSupport() {
-        final Bundle bundle = findBundle("org.apache.sling.hc.support");
+    public void testOrgApacheFelixHealthcheckCore() {
+        final Bundle bundle = findBundle("org.apache.felix.healthcheck.core");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheFelixHealthcheckGeneralchecks() {
+        final Bundle bundle = findBundle("org.apache.felix.healthcheck.generalchecks");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheFelixHealthcheckWebconsoleplugin() {
+        final Bundle bundle = findBundle("org.apache.felix.healthcheck.webconsoleplugin");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
