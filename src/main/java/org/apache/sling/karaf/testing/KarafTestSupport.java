@@ -26,6 +26,8 @@ import javax.inject.Inject;
 
 import org.apache.karaf.features.BootFinished;
 import org.ops4j.pax.exam.Option;
+import org.ops4j.pax.exam.OptionUtils;
+import org.ops4j.pax.exam.karaf.container.internal.JavaVersionUtil;
 import org.ops4j.pax.exam.util.Filter;
 import org.ops4j.pax.exam.util.PathUtils;
 import org.osgi.framework.Bundle;
@@ -38,6 +40,7 @@ import static org.ops4j.pax.exam.CoreOptions.maven;
 import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
 import static org.ops4j.pax.exam.CoreOptions.options;
 import static org.ops4j.pax.exam.CoreOptions.streamBundle;
+import static org.ops4j.pax.exam.CoreOptions.vmOption;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.editConfigurationFilePut;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.karafDistributionConfiguration;
@@ -128,7 +131,7 @@ public abstract class KarafTestSupport {
         final int sshPort = findFreePort();
         final int httpPort = findFreePort();
         final String unpackDirectory = String.format("%s/target/paxexam/%s", PathUtils.getBaseDir(), getClass().getSimpleName());
-        return options(
+        final Option[] options = options(
             karafDistributionConfiguration()
                 .frameworkUrl(maven().groupId(karafGroupId()).artifactId(karafArtifactId()).versionAsInProject().type("tar.gz"))
                 .useDeployFolder(false)
@@ -144,6 +147,40 @@ public abstract class KarafTestSupport {
             mavenBundle().groupId("org.ops4j.pax.tinybundles").artifactId("tinybundles").versionAsInProject(),
             mavenBundle().groupId("biz.aQute.bnd").artifactId("biz.aQute.bndlib").versionAsInProject(),
             karafTestSupportBundle()
+        );
+        if (JavaVersionUtil.getMajorVersion() >= 9) {
+            return OptionUtils.combine(options, java9plus());
+        } else {
+            return options;
+        }
+    }
+
+    protected Option[] java9plus() {
+        return options(
+            vmOption("--add-reads=java.xml=java.logging"),
+            vmOption("--add-exports=java.base/org.apache.karaf.specs.locator=java.xml,ALL-UNNAMED"),
+            vmOption("--patch-module"),
+            vmOption("java.base=lib/endorsed/org.apache.karaf.specs.locator-" + System.getProperty("karaf.version") + ".jar"),
+            vmOption("--patch-module"),
+            vmOption("java.xml=lib/endorsed/org.apache.karaf.specs.java.xml-" + System.getProperty("karaf.version") + ".jar"),
+            vmOption("--add-opens"),
+            vmOption("java.base/java.security=ALL-UNNAMED"),
+            vmOption("--add-opens"),
+            vmOption("java.base/java.net=ALL-UNNAMED"),
+            vmOption("--add-opens"),
+            vmOption("java.base/java.lang=ALL-UNNAMED"),
+            vmOption("--add-opens"),
+            vmOption("java.base/java.util=ALL-UNNAMED"),
+            vmOption("--add-opens"),
+            vmOption("java.naming/javax.naming.spi=ALL-UNNAMED"),
+            vmOption("--add-opens"),
+            vmOption("java.rmi/sun.rmi.transport.tcp=ALL-UNNAMED"),
+            vmOption("--add-exports=java.base/sun.net.www.protocol.http=ALL-UNNAMED"),
+            vmOption("--add-exports=java.base/sun.net.www.protocol.https=ALL-UNNAMED"),
+            vmOption("--add-exports=java.base/sun.net.www.protocol.jar=ALL-UNNAMED"),
+            vmOption("--add-exports=jdk.naming.rmi/com.sun.jndi.url.rmi=ALL-UNNAMED"),
+            vmOption("-classpath"),
+            vmOption("lib/jdk9plus/*" + File.pathSeparator + "lib/boot/*")
         );
     }
 
