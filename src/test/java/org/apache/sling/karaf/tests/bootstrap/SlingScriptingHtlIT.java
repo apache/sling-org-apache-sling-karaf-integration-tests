@@ -34,13 +34,13 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingScriptingSightlyIT extends KarafTestSupport {
+public class SlingScriptingHtlIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
             addSlingFeatures(
-                "sling-scripting-sightly"
+                "sling-scripting-htl"
             )
         );
     }
