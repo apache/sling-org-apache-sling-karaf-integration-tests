@@ -78,11 +78,4 @@ public class SlingScriptingThymeleafIT extends KarafTestSupport {
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
-    @Test
-    public void testOrgApacheCommonsIo() {
-        final Bundle bundle = findBundle("org.apache.commons.io");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
 }

@@ -104,7 +104,7 @@ public class SlingQuickstartOakMongoIT extends AbstractSlingQuickstartOakTestSup
 
     @Test
     public void testComH2databaseH2Mvstore() {
-        final Bundle bundle = findBundle("org.h2.mvstore");
+        final Bundle bundle = findBundle("com.h2database.mvstore");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
