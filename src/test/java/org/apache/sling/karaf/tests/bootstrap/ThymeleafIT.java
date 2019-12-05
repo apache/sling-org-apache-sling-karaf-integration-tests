@@ -34,18 +34,39 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingScriptingThymeleafIT extends KarafTestSupport {
+public class ThymeleafIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-scripting-thymeleaf")
+            addSlingFeatures("thymeleaf")
         );
     }
 
     @Test
-    public void testOrgApacheSlingScriptingThymeleaf() {
-        final Bundle bundle = findBundle("org.apache.sling.scripting.thymeleaf");
+    public void testOrgAttoparser() {
+        final Bundle bundle = findBundle("org.attoparser");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgUnbescape() {
+        final Bundle bundle = findBundle("org.unbescape");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheServicemixBundlesOgnl() {
+        final Bundle bundle = findBundle("org.apache.servicemix.bundles.ognl");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testJavassist() {
+        final Bundle bundle = findBundle("javassist");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
