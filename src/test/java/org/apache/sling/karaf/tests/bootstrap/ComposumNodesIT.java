@@ -34,12 +34,12 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class ComposumIT extends KarafTestSupport {
+public class ComposumNodesIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("composum")
+            addSlingFeatures("composum-nodes")
         );
     }
 
