@@ -18,9 +18,6 @@
  */
 package org.apache.sling.karaf.tests.bootstrap;
 
-import javax.inject.Inject;
-
-import org.apache.sling.commons.messaging.MessageService;
 import org.apache.sling.karaf.testing.KarafTestSupport;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,28 +27,18 @@ import org.ops4j.pax.exam.OptionUtils;
 import org.ops4j.pax.exam.junit.PaxExam;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
-import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.Bundle;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.editConfigurationFilePut;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
 public class SlingCommonsMessagingMailIT extends KarafTestSupport {
 
-    @Inject
-    @Filter(timeout = 300000)
-    public MessageService messageService;
-
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            editConfigurationFilePut("etc/org.apache.sling.commons.messaging.mail.internal.SimpleMailBuilder.config", "subject", "Default Subject"),
-            editConfigurationFilePut("etc/org.apache.sling.commons.messaging.mail.internal.SimpleMailBuilder.config", "from", "from@example.net"),
-            editConfigurationFilePut("etc/org.apache.sling.commons.messaging.mail.internal.SimpleMailBuilder.config", "smtp.hostname", "localhost"),
-            editConfigurationFilePut("etc/org.apache.sling.commons.messaging.mail.internal.SimpleMailBuilder.config", "smtp.port", "25"),
             addSlingFeatures("sling-commons-messaging-mail")
         );
     }
