@@ -34,6 +34,10 @@
   <name>Apache Sling - Karaf Integration Tests</name>
   <description>Integration Tests for Apache Sling Karaf</description>
 
+  <properties>
+    <org.ops4j.pax.exam.version>4.13.3</org.ops4j.pax.exam.version>
+  </properties>
+
   <scm>
     <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-karaf-integration-tests.git</connection>
     <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-karaf-integration-tests.git</developerConnection>
@@ -60,11 +64,6 @@
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>osgi.core</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.osgi</groupId>
-      <artifactId>osgi.cmpn</artifactId>
       <scope>provided</scope>
     </dependency>
     <!-- Apache Karaf -->
@@ -131,17 +130,17 @@
     <dependency>
       <groupId>org.ops4j.pax.exam</groupId>
       <artifactId>pax-exam</artifactId>
-      <version>4.13.2</version>
+      <version>${org.ops4j.pax.exam.version}</version>
     </dependency>
     <dependency>
       <groupId>org.ops4j.pax.exam</groupId>
       <artifactId>pax-exam-container-karaf</artifactId>
-      <version>4.13.2</version>
+      <version>${org.ops4j.pax.exam.version}</version>
     </dependency>
     <dependency>
       <groupId>org.ops4j.pax.exam</groupId>
       <artifactId>pax-exam-junit4</artifactId>
-      <version>4.13.2</version>
+      <version>${org.ops4j.pax.exam.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
