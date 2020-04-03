@@ -44,8 +44,8 @@ public class JackrabbitIT extends KarafTestSupport {
     }
 
     @Test
-    public void testOrgApacheJackrabbitJackrabbitApi() {
-        final Bundle bundle = findBundle("org.apache.jackrabbit.jackrabbit-api");
+    public void testOrgApacheJackrabbitOakJackrabbitApi() {
+        final Bundle bundle = findBundle("org.apache.jackrabbit.oak-jackrabbit-api");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
