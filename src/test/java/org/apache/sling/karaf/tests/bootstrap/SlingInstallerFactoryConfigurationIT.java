@@ -34,25 +34,18 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingInstallerIT extends KarafTestSupport {
+public class SlingInstallerFactoryConfigurationIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-installer")
+            addSlingFeatures("sling-installer-factory-configuration")
         );
     }
 
     @Test
-    public void testOrgApacheSlingInstallerConsole() {
-        final Bundle bundle = findBundle("org.apache.sling.installer.console");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
-    public void testOrgApacheSlingInstallerCore() {
-        final Bundle bundle = findBundle("org.apache.sling.installer.core");
+    public void testOrgApacheSlingInstallerFactoryConfiguration() {
+        final Bundle bundle = findBundle("org.apache.sling.installer.factory.configuration");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
