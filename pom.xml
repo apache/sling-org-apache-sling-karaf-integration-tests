@@ -155,36 +155,16 @@
         </exclusion>
       </exclusions>
     </dependency>
-    <!-- MongoDB -->
     <dependency>
-      <!-- zombie processes like extract-fd770c28-8fb5-4092-87d5-4100c18a8f32extractmongod with versions greater 2.0.0 use 100% CPU -->
-      <groupId>de.flapdoodle.embed</groupId>
-      <artifactId>de.flapdoodle.embed.mongo</artifactId>
-      <version>1.50.5</version>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>testcontainers</artifactId>
+      <version>1.14.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>de.flapdoodle.embed</groupId>
-      <artifactId>de.flapdoodle.embed.process</artifactId>
-      <version>1.50.2</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>net.java.dev.jna</groupId>
-      <artifactId>jna</artifactId>
-      <version>5.2.0</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>net.java.dev.jna</groupId>
-      <artifactId>jna-platform</artifactId>
-      <version>5.2.0</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-compress</artifactId>
-      <version>1.18</version>
+      <groupId>org.rnorth.duct-tape</groupId>
+      <artifactId>duct-tape</artifactId>
+      <version>1.0.8</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -226,12 +206,6 @@
             </executions>
             <configuration>
               <redirectTestOutputToFile>true</redirectTestOutputToFile>
-              <properties>
-                <property>
-                  <name>listener</name>
-                  <value>org.apache.sling.karaf.tests.support.MongodProcessStopper</value>
-                </property>
-              </properties>
             </configuration>
           </plugin>
         </plugins>
