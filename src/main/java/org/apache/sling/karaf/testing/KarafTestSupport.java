@@ -82,7 +82,7 @@ public abstract class KarafTestSupport {
     // test support
 
     protected int httpPort() throws IOException {
-        final Configuration configuration = configurationAdmin.getConfiguration("org.ops4j.pax.web");
+        final Configuration configuration = configurationAdmin.getConfiguration("org.apache.felix.http.cfg");
         return Integer.parseInt(configuration.getProperties().get("org.osgi.service.http.port").toString());
     }
 
@@ -143,7 +143,7 @@ public abstract class KarafTestSupport {
             editConfigurationFilePut("etc/org.apache.karaf.management.cfg", "rmiRegistryPort", Integer.toString(rmiRegistryPort)),
             editConfigurationFilePut("etc/org.apache.karaf.management.cfg", "rmiServerPort", Integer.toString(rmiServerPort)),
             editConfigurationFilePut("etc/org.apache.karaf.shell.cfg", "sshPort", Integer.toString(sshPort)),
-            editConfigurationFilePut("etc/org.ops4j.pax.web.cfg", "org.osgi.service.http.port", Integer.toString(httpPort)),
+            editConfigurationFilePut("etc/org.apache.felix.http.cfg", "org.osgi.service.http.port", Integer.toString(httpPort)),
             mavenBundle().groupId("org.ops4j.pax.tinybundles").artifactId("tinybundles").versionAsInProject(),
             mavenBundle().groupId("biz.aQute.bnd").artifactId("biz.aQute.bndlib").versionAsInProject(),
             karafTestSupportBundle()

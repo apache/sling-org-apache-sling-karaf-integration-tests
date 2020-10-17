@@ -60,4 +60,18 @@ public class SlingScriptingJspIT extends KarafTestSupport {
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
+    @Test
+    public void testOrgApacheSlingScriptingJspApi() {
+        final Bundle bundle = findBundle("org.apache.sling.scripting.jsp-api");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
+    public void testOrgApacheSlingScriptingElApi() {
+        final Bundle bundle = findBundle("org.apache.sling.scripting.el-api");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
 }
