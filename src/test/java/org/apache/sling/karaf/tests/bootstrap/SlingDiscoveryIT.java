@@ -50,11 +50,4 @@ public class SlingDiscoveryIT extends KarafTestSupport {
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
-    @Test
-    public void testOrgApacheSlingDiscoverySupport() {
-        final Bundle bundle = findBundle("org.apache.sling.discovery.support");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
 }
