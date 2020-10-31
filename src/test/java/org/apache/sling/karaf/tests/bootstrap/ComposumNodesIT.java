@@ -51,13 +51,6 @@ public class ComposumNodesIT extends KarafTestSupport {
     }
 
     @Test
-    public void testComComposumCoreConfig() {
-        final Bundle bundle = findBundle("com.composum.core.config");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
-    }
-
-    @Test
     public void testComComposumCoreConsole() {
         final Bundle bundle = findBundle("com.composum.core.console");
         assertNotNull(bundle);
