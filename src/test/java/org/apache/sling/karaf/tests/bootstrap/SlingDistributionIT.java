@@ -39,7 +39,8 @@ public class SlingDistributionIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-distribution")
+            addSlingFeatures("sling-distribution"),
+            addFelixHttpFeature()
         );
     }
 

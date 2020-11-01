@@ -39,7 +39,8 @@ public class SlingQuickstartOakIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-quickstart-oak")
+            addSlingFeatures("sling-quickstart-oak"),
+            addFelixHttpFeature()
         );
     }
 

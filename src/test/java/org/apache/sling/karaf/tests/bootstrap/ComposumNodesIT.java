@@ -39,7 +39,8 @@ public class ComposumNodesIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("composum-nodes")
+            addSlingFeatures("composum-nodes"),
+            addFelixHttpFeature()
         );
     }
 

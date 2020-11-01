@@ -39,7 +39,8 @@ public class SlingScriptingFreemarkerIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-scripting-freemarker")
+            addSlingFeatures("sling-scripting-freemarker"),
+            addFelixHttpFeature()
         );
     }
 

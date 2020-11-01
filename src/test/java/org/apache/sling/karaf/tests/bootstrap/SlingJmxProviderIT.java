@@ -39,7 +39,8 @@ public class SlingJmxProviderIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-jmx-provider")
+            addSlingFeatures("sling-jmx-provider"),
+            addFelixHttpFeature()
         );
     }
 

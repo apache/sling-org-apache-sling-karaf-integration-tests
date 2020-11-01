@@ -39,7 +39,8 @@ public class SlingScriptingThymeleafIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-scripting-thymeleaf")
+            addSlingFeatures("sling-scripting-thymeleaf"),
+            addFelixHttpFeature()
         );
     }
 

@@ -39,7 +39,8 @@ public class SlingInstallerFactoryPackagesIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-installer-factory-packages")
+            addSlingFeatures("sling-installer-factory-packages"),
+            addFelixHttpFeature()
         );
     }
 

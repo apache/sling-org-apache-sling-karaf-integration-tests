@@ -39,7 +39,8 @@ public class SlingCommonsFsclassloaderIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-commons-fsclassloader")
+            addSlingFeatures("sling-commons-fsclassloader"),
+            addFelixHttpFeature()
         );
     }
 

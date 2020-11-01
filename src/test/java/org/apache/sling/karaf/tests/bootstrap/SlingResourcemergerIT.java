@@ -39,7 +39,8 @@ public class SlingResourcemergerIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-resourcemerger")
+            addSlingFeatures("sling-resourcemerger"),
+            addFelixHttpFeature()
         );
     }
 

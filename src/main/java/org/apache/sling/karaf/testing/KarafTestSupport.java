@@ -113,6 +113,10 @@ public abstract class KarafTestSupport {
         return features(maven().groupId("org.apache.sling").artifactId("org.apache.sling.karaf-features").type("xml").classifier("features").versionAsInProject(), features);
     }
 
+    protected Option addFelixHttpFeature() {
+        return features(maven().groupId("org.apache.karaf.features").artifactId("standard").type("xml").classifier("features").versionAsInProject(), "felix-http");
+    }
+
     protected Option karafTestSupportBundle() {
         return streamBundle(
             bundle()

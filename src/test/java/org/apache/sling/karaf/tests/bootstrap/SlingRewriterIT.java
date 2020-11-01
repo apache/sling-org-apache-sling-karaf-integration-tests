@@ -39,7 +39,8 @@ public class SlingRewriterIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-rewriter")
+            addSlingFeatures("sling-rewriter"),
+            addFelixHttpFeature()
         );
     }
 

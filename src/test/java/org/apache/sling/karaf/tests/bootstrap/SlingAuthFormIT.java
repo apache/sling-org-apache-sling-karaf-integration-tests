@@ -39,7 +39,8 @@ public class SlingAuthFormIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-auth-form")
+            addSlingFeatures("sling-auth-form"),
+            addFelixHttpFeature()
         );
     }
 

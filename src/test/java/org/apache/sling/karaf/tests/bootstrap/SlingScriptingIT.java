@@ -39,7 +39,8 @@ public class SlingScriptingIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-scripting")
+            addSlingFeatures("sling-scripting"),
+            addFelixHttpFeature()
         );
     }
 

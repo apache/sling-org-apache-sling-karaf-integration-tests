@@ -39,7 +39,8 @@ public class SlingResourceInventoryIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-resource-inventory")
+            addSlingFeatures("sling-resource-inventory"),
+            addFelixHttpFeature()
         );
     }
 

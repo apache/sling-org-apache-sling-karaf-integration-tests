@@ -39,7 +39,8 @@ public class SlingResourcePresenceIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-resource-presence")
+            addSlingFeatures("sling-resource-presence"),
+            addFelixHttpFeature()
         );
     }
 

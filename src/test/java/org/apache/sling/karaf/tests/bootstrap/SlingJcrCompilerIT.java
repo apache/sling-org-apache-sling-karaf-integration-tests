@@ -39,7 +39,8 @@ public class SlingJcrCompilerIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-jcr-compiler")
+            addSlingFeatures("sling-jcr-compiler"),
+            addFelixHttpFeature()
         );
     }
 

@@ -39,7 +39,8 @@ public class FelixHealthcheckIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("felix-healthcheck")
+            addSlingFeatures("felix-healthcheck"),
+            addFelixHttpFeature()
         );
     }
 

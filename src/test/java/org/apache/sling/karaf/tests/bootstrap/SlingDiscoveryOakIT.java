@@ -39,7 +39,8 @@ public class SlingDiscoveryOakIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-discovery-oak")
+            addSlingFeatures("sling-discovery-oak"),
+            addFelixHttpFeature()
         );
     }
 

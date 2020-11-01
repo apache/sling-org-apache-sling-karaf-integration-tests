@@ -42,7 +42,8 @@ public class SlingScriptingJavaIT extends KarafTestSupport {
             addSlingFeatures(
                 "sling-commons-fsclassloader",
                 "sling-scripting-java"
-            )
+            ),
+            addFelixHttpFeature()
         );
     }
 

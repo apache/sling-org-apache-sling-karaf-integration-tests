@@ -39,7 +39,8 @@ public class SlingJcrRepoinitIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-jcr-repoinit")
+            addSlingFeatures("sling-jcr-repoinit"),
+            addFelixHttpFeature()
         );
     }
 

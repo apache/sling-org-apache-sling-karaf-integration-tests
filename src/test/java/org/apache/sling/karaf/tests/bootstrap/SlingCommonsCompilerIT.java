@@ -42,7 +42,8 @@ public class SlingCommonsCompilerIT extends KarafTestSupport {
             addSlingFeatures(
                 "sling-commons-fsclassloader",
                 "sling-commons-compiler"
-            )
+            ),
+            addFelixHttpFeature()
         );
     }
 

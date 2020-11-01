@@ -39,7 +39,8 @@ public class SlingQueryIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-query")
+            addSlingFeatures("sling-query"),
+            addFelixHttpFeature()
         );
     }
 

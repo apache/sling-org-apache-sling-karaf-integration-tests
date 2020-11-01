@@ -39,7 +39,8 @@ public class SlingHealthcheckIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-healthcheck")
+            addSlingFeatures("sling-healthcheck"),
+            addFelixHttpFeature()
         );
     }
 

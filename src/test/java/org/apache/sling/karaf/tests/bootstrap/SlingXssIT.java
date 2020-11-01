@@ -39,7 +39,8 @@ public class SlingXssIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-xss")
+            addSlingFeatures("sling-xss"),
+            addFelixHttpFeature()
         );
     }
 

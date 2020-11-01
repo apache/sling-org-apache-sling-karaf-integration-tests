@@ -39,7 +39,8 @@ public class SlingInstallerProviderFileIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-installer-provider-file")
+            addSlingFeatures("sling-installer-provider-file"),
+            addFelixHttpFeature()
         );
     }
 

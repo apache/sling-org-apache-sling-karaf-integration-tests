@@ -39,7 +39,8 @@ public class SlingStarterContentIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-starter-content")
+            addSlingFeatures("sling-starter-content"),
+            addFelixHttpFeature()
         );
     }
 

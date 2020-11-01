@@ -38,7 +38,8 @@ public class SlingQuickstartOakTarIT extends AbstractSlingQuickstartOakTestSuppo
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-quickstart-oak-tar")
+            addSlingFeatures("sling-quickstart-oak-tar"),
+            addFelixHttpFeature()
         );
     }
 

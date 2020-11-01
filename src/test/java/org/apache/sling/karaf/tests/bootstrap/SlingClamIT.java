@@ -39,7 +39,8 @@ public class SlingClamIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-clam")
+            addSlingFeatures("sling-clam"),
+            addFelixHttpFeature()
         );
     }
 

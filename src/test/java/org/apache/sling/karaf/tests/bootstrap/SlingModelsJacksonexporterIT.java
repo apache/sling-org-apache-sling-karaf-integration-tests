@@ -39,7 +39,8 @@ public class SlingModelsJacksonexporterIT extends KarafTestSupport {
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-models-jacksonexporter")
+            addSlingFeatures("sling-models-jacksonexporter"),
+            addFelixHttpFeature()
         );
     }
 
