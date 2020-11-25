@@ -45,36 +45,36 @@ public class ComposumNodesIT extends KarafTestSupport {
     }
 
     @Test
-    public void testComComposumCoreCommons() {
-        final Bundle bundle = findBundle("com.composum.core.commons");
+    public void testComComposumNodesCommons() {
+        final Bundle bundle = findBundle("com.composum.nodes.commons");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
     @Test
-    public void testComComposumCoreConsole() {
-        final Bundle bundle = findBundle("com.composum.core.console");
+    public void testComComposumNodesConsole() {
+        final Bundle bundle = findBundle("com.composum.nodes.console");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
     @Test
-    public void testComComposumCoreJslibs() {
-        final Bundle bundle = findBundle("com.composum.core.jslibs");
+    public void testComComposumNodesJslibs() {
+        final Bundle bundle = findBundle("com.composum.nodes.jslibs");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
     @Test
-    public void testComComposumCoreUsermgnt() {
-        final Bundle bundle = findBundle("com.composum.core.usermgnt");
+    public void testComComposumNodesUsermgr() {
+        final Bundle bundle = findBundle("com.composum.nodes.usermgr");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
     @Test
-    public void testComComposumCorePckgmgr() {
-        final Bundle bundle = findBundle("com.composum.core.pckgmgr");
+    public void testComComposumNodesPckgmgr() {
+        final Bundle bundle = findBundle("com.composum.nodes.pckgmgr");
         assertNotNull(bundle);
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
