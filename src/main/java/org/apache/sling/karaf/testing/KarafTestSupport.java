@@ -148,6 +148,7 @@ public abstract class KarafTestSupport {
             editConfigurationFilePut("etc/org.apache.karaf.management.cfg", "rmiServerPort", Integer.toString(rmiServerPort)),
             editConfigurationFilePut("etc/org.apache.karaf.shell.cfg", "sshPort", Integer.toString(sshPort)),
             editConfigurationFilePut("etc/org.apache.felix.http.cfg", "org.osgi.service.http.port", Integer.toString(httpPort)),
+            mavenBundle().groupId("org.apache.sling").artifactId("org.apache.sling.karaf-configs").versionAsInProject(),
             mavenBundle().groupId("org.ops4j.pax.tinybundles").artifactId("tinybundles").versionAsInProject(),
             mavenBundle().groupId("biz.aQute.bnd").artifactId("biz.aQute.bndlib").versionAsInProject(),
             karafTestSupportBundle()
