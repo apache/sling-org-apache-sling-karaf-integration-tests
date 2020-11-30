@@ -69,11 +69,8 @@ public abstract class KarafTestSupport {
     }
 
     protected synchronized int findFreePort() {
-        try {
-            final ServerSocket serverSocket = new ServerSocket(0);
-            final int port = serverSocket.getLocalPort();
-            serverSocket.close();
-            return port;
+        try (final ServerSocket serverSocket = new ServerSocket(0)) {
+            return serverSocket.getLocalPort();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
