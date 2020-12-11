@@ -139,7 +139,7 @@ public abstract class KarafTestSupport {
                 .name(karafName())
                 .unpackDirectory(new File(unpackDirectory)),
             keepRuntimeFolder(),
-            editConfigurationFilePut("etc/org.apache.sling.jcr.base.internal.LoginAdminWhitelist.config", "whitelist.bundles.regexp", "^PAXEXAM.*$"),
+            editConfigurationFilePut("etc/org.apache.sling.jcr.base.internal.LoginAdminWhitelist.config", "whitelist.bundles.regexp", "^PAXEXAM.*$|^org.apache.sling.(launchpad|junit).*$"),
             editConfigurationFilePut("etc/org.ops4j.pax.logging.cfg", "log4j2.rootLogger.level", "DEBUG"),
             editConfigurationFilePut("etc/org.apache.karaf.management.cfg", "rmiRegistryPort", Integer.toString(rmiRegistryPort)),
             editConfigurationFilePut("etc/org.apache.karaf.management.cfg", "rmiServerPort", Integer.toString(rmiServerPort)),
