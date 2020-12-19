@@ -26,7 +26,6 @@ import javax.inject.Inject;
 
 import org.apache.karaf.features.BootFinished;
 import org.ops4j.pax.exam.Option;
-import org.ops4j.pax.exam.OptionUtils;
 import org.ops4j.pax.exam.karaf.container.internal.JavaVersionUtil;
 import org.ops4j.pax.exam.util.Filter;
 import org.ops4j.pax.exam.util.PathUtils;
@@ -41,6 +40,7 @@ import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
 import static org.ops4j.pax.exam.CoreOptions.options;
 import static org.ops4j.pax.exam.CoreOptions.streamBundle;
 import static org.ops4j.pax.exam.CoreOptions.vmOption;
+import static org.ops4j.pax.exam.OptionUtils.combine;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.editConfigurationFilePut;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.karafDistributionConfiguration;
@@ -151,7 +151,7 @@ public abstract class KarafTestSupport {
             karafTestSupportBundle()
         );
         if (JavaVersionUtil.getMajorVersion() >= 9) {
-            return OptionUtils.combine(options, java9plus());
+            return combine(options, java9plus());
         } else {
             return options;
         }
