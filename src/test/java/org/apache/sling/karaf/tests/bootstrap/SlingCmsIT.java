@@ -19,7 +19,6 @@
 package org.apache.sling.karaf.tests.bootstrap;
 
 import org.apache.sling.karaf.testing.KarafTestSupport;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
@@ -35,7 +34,6 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-@Ignore
 public class SlingCmsIT extends KarafTestSupport {
 
     @Configuration
