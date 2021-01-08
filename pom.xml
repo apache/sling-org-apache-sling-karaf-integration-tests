@@ -29,7 +29,7 @@
   </parent>
 
   <artifactId>org.apache.sling.karaf-integration-tests</artifactId>
-  <version>0.1.1-SNAPSHOT</version>
+  <version>0.2.0-SNAPSHOT</version>
 
   <name>Apache Sling - Karaf Integration Tests</name>
   <description>Integration Tests for Apache Sling Karaf</description>
@@ -127,13 +127,13 @@
     <dependency>
       <groupId>org.apache.sling</groupId>
       <artifactId>org.apache.sling.karaf-configs</artifactId>
-      <version>0.1.1-SNAPSHOT</version>
+      <version>0.2.0-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.sling</groupId>
       <artifactId>org.apache.sling.karaf-features</artifactId>
-      <version>0.1.1-SNAPSHOT</version>
+      <version>0.2.0-SNAPSHOT</version>
       <type>xml</type>
       <classifier>features</classifier>
       <scope>test</scope>
