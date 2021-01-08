@@ -81,13 +81,6 @@ public abstract class AbstractSlingQuickstartOakTestSupport extends KarafTestSup
         assertNotNull(slingRepository);
     }
 
-    @Test
-    public void testVarSlingExists() throws Exception {
-        final Session session = slingRepository.loginAdministrative(null);
-        session.getRootNode().getNode("var/sling");
-        session.logout();
-    }
-
     // see org.apache.sling.jcr.repository.it.CommonTests
 
     private final AtomicInteger uniqueNameCounter = new AtomicInteger();
