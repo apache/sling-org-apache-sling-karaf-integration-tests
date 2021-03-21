@@ -52,6 +52,13 @@ public class SlingScriptingIT extends KarafTestSupport {
     }
 
     @Test
+    public void testOrgApacheSlingScriptingSpi() {
+        final Bundle bundle = findBundle("org.apache.sling.scripting.spi");
+        assertNotNull(bundle);
+        assertEquals(Bundle.ACTIVE, bundle.getState());
+    }
+
+    @Test
     public void testOrgApacheSlingScriptingCore() {
         final Bundle bundle = findBundle("org.apache.sling.scripting.core");
         assertNotNull(bundle);
