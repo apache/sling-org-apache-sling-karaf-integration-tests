@@ -51,6 +51,7 @@ import org.apache.sling.jcr.api.SlingRepository;
 import org.apache.sling.karaf.testing.KarafTestSupport;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.ServiceRegistration;
 import org.slf4j.Logger;
@@ -60,6 +61,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.editConfigurationFilePut;
 
 public abstract class AbstractSlingQuickstartOakTestSupport extends KarafTestSupport {
 
@@ -74,6 +76,14 @@ public abstract class AbstractSlingQuickstartOakTestSupport extends KarafTestSup
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     public AbstractSlingQuickstartOakTestSupport() {
+    }
+
+    protected Option allowEveryoneReadContent() {
+        final String[] scripts = new String[]{
+            "create path (sling:OrderedFolder) /content",
+            "set ACL for everyone\nallow jcr:read on /content\nend"
+        };
+        return editConfigurationFilePut("etc/org.apache.sling.jcr.repoinit.RepositoryInitializer-everyone_read_content.config", "scripts", scripts);
     }
 
     @Test

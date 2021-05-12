@@ -66,6 +66,7 @@ public class SlingQuickstartOakMongoIT extends AbstractSlingQuickstartOakTestSup
         final String mongoUri = String.format("mongodb://%s:%s", host, port);
         return combine(
             baseConfiguration(),
+            allowEveryoneReadContent(),
             editConfigurationFilePut("etc/org.apache.karaf.features.cfg", "featuresBoot", "(wrap)"),
             editConfigurationFilePut("etc/org.apache.jackrabbit.oak.plugins.document.DocumentNodeStoreService.config", "mongouri", mongoUri),
             addSlingFeatures("sling-quickstart-oak-mongo"),
