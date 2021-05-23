@@ -21,6 +21,8 @@ package org.apache.sling.karaf.testing;
 import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.util.Dictionary;
+import java.util.Properties;
 
 import javax.inject.Inject;
 
@@ -79,8 +81,10 @@ public abstract class KarafTestSupport {
     // test support
 
     protected int httpPort() throws IOException {
-        final Configuration configuration = configurationAdmin.getConfiguration("org.apache.felix.http.cfg");
-        return Integer.parseInt(configuration.getProperties().get("org.osgi.service.http.port").toString());
+        final Configuration configuration = configurationAdmin.getConfiguration("org.apache.felix.http");
+        final Dictionary<String, Object> properties = configuration.getProperties();
+        final Object port = properties.get("org.osgi.service.http.port");
+        return Integer.parseInt(port.toString());
     }
 
     protected Bundle findBundle(final String symbolicName) {
