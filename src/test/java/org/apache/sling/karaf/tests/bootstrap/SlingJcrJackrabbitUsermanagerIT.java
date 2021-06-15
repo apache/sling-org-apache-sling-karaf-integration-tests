@@ -34,21 +34,14 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
-public class SlingJcrJackrabbitSecurityIT extends KarafTestSupport {
+public class SlingJcrJackrabbitUsermanagerIT extends KarafTestSupport {
 
     @Configuration
     public Option[] configuration() {
         return OptionUtils.combine(baseConfiguration(),
-            addSlingFeatures("sling-jcr-jackrabbit-security"),
+            addSlingFeatures("sling-jcr-jackrabbit-usermanager"),
             addFelixHttpFeature()
         );
-    }
-
-    @Test
-    public void testOrgApacheSlingJcrJackrabbitAccessmanager() {
-        final Bundle bundle = findBundle("org.apache.sling.jcr.jackrabbit.accessmanager");
-        assertNotNull(bundle);
-        assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
     @Test
