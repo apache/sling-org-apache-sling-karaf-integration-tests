@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.Dictionary;
+import java.util.Objects;
 import java.util.Properties;
 
 import javax.inject.Inject;
@@ -29,6 +30,8 @@ import javax.inject.Inject;
 import org.apache.karaf.features.BootFinished;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.karaf.container.internal.JavaVersionUtil;
+import org.ops4j.pax.exam.options.OptionalCompositeOption;
+import org.ops4j.pax.exam.options.extra.VMOption;
 import org.ops4j.pax.exam.util.Filter;
 import org.ops4j.pax.exam.util.PathUtils;
 import org.osgi.framework.Bundle;
@@ -42,6 +45,7 @@ import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
 import static org.ops4j.pax.exam.CoreOptions.options;
 import static org.ops4j.pax.exam.CoreOptions.streamBundle;
 import static org.ops4j.pax.exam.CoreOptions.vmOption;
+import static org.ops4j.pax.exam.CoreOptions.when;
 import static org.ops4j.pax.exam.OptionUtils.combine;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.editConfigurationFilePut;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.features;
@@ -152,13 +156,20 @@ public abstract class KarafTestSupport {
             addSlingFeatures("sling-configs"),
             mavenBundle().groupId("org.ops4j.pax.tinybundles").artifactId("tinybundles").versionAsInProject(),
             mavenBundle().groupId("biz.aQute.bnd").artifactId("biz.aQute.bndlib").versionAsInProject(),
-            karafTestSupportBundle()
+            karafTestSupportBundle(),
+            jacoco()
         );
         if (JavaVersionUtil.getMajorVersion() >= 9) {
             return combine(options, java9plus());
         } else {
             return options;
         }
+    }
+
+    protected OptionalCompositeOption jacoco() {
+        final String jacocoCommand = System.getProperty("jacoco.command");
+        final VMOption option = Objects.nonNull(jacocoCommand) && !jacocoCommand.trim().isEmpty() ? vmOption(jacocoCommand) : null;
+        return when(Objects.nonNull(option)).useOptions(option);
     }
 
     protected Option[] java9plus() {
