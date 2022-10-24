@@ -74,7 +74,7 @@ public abstract class KarafTestSupport {
     public KarafTestSupport() {
     }
 
-    protected synchronized int findFreePort() {
+    protected static synchronized int findFreePort() {
         try (final ServerSocket serverSocket = new ServerSocket(0)) {
             return serverSocket.getLocalPort();
         } catch (Exception e) {

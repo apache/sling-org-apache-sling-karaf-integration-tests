@@ -57,7 +57,6 @@ public class JackrabbitOakIT extends KarafTestSupport {
         assertEquals(Bundle.ACTIVE, bundle.getState());
     }
 
-
     @Test
     public void testOrgApacheJackrabbitOakBlobPlugins() {
         final Bundle bundle = findBundle("org.apache.jackrabbit.oak-blob-plugins");
