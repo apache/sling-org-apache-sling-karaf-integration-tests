@@ -67,12 +67,12 @@ public class SlingQuickstartOakMongoIT extends AbstractSlingQuickstartOakTestSup
         return combine(
             baseConfiguration(),
             allowEveryoneReadContent(),
-            editConfigurationFilePut("etc/org.apache.karaf.features.cfg", "featuresBoot", "(wrap)"),
+            editConfigurationFilePut("etc/org.apache.karaf.features.cfg", "featuresBoot", "(pax-url-wrap)"),
             editConfigurationFilePut("etc/org.apache.jackrabbit.oak.plugins.document.DocumentNodeStoreService.config", "mongouri", mongoUri),
             addSlingFeatures("sling-quickstart-oak-mongo"),
             addFelixHttpFeature(),
             wrappedBundle(mavenBundle().groupId("org.rnorth.duct-tape").artifactId("duct-tape").versionAsInProject()),
-            wrappedBundle(mavenBundle().groupId("org.testcontainers").artifactId("testcontainers").versionAsInProject()).imports("org.junit.rules").overwriteManifest(WrappedUrlProvisionOption.OverwriteMode.MERGE)
+            wrappedBundle(mavenBundle().groupId("org.testcontainers").artifactId("testcontainers").versionAsInProject())
         );
     }
 
